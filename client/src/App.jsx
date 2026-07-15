@@ -1,9 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import Auth from "./pages/Auth";
-import VerifyWallet from "./pages/VerifyWallet";
+import VerifyWallet from "./pages/Verifywallet";
+
+
+
 import Dashboard from "./pages/Dashboard";
-import PreJoin from "./pages/PreJoin";
+
+import PreJoin from "./pages/Prejoin";
+
+
 import MeetingRoom from "./pages/MeetingRoom";
 
 function App() {
