@@ -23,7 +23,8 @@ const meetingRoutes = require('./routes/meeting');
 
 
 app.use(cors({
-  origin: ["http://localhost:5173", "http://192.168.43.102:5173"],
+
+  origin: ["http://localhost:5173", "http://192.168.43.102:5173", "https://blockmeet-clae.vercel.app"],
 
     methods: ["GET", "POST"],
     credentials: true
@@ -117,14 +118,6 @@ socket.on("send-file", ({ meetingId, fileName, fileData }) => {
 socket.on("whiteboard-draw", ({ meetingId, data }) => {
     socket.to(meetingId).emit("whiteboard-draw", data);
   });
-
-
-
-  
-
-
-
-
 
 }); // 👈 YE CLOSING BRACKET MISSING THI — io.on("connection") ko close karti hai
 
