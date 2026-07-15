@@ -128,6 +128,6 @@ socket.on("whiteboard-draw", ({ meetingId, data }) => {
 
 }); // 👈 YE CLOSING BRACKET MISSING THI — io.on("connection") ko close karti hai
 
-server.listen(3001, '0.0.0.0', () => {
+server.listen(process.env.PORT || 3001, '0.0.0.0', () => {
   console.log("NexusFlow Server running on 0.0.0.0:3001");
 });
