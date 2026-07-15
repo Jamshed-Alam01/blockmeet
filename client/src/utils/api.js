@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BACKEND_URL = `http://${window.location.hostname}:3001`;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || `http://${window.location.hostname}:3001`;
 
 // Axios instance jo saari requests ke liye use hoga
 const api = axios.create({
