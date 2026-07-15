@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #12141C;
+  color: #EDEEF2;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Background Glow */
+body::before{
+  content:"";
+  position:fixed;
+  left:-250px;
+  bottom:-250px;
+  width:500px;
+  height:500px;
+  background:rgba(108,92,231,.22);
+  filter:blur(130px);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:-2;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  right:-220px;
+  bottom:-220px;
+  width:450px;
+  height:450px;
+  background:rgba(70,110,255,.18);
+  filter:blur(120px);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:-2;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-entrance{
+  animation:fadeSlideUp .45s ease;
+}
