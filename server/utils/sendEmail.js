@@ -1,28 +1,17 @@
-const nodemailer = require("nodemailer");
+const SibApiV3Sdk = require("sib-api-v3-sdk");
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  family: 4,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  tls: {
-    rejectUnauthorized: false,
-  },
-});
+const defaultClient = SibApiV3Sdk.ApiClient.instance;
+const apiKey = defaultClient.authentications["api-key"];
+apiKey.apiKey = process.env.BREVO_API_KEY;
 
-
-
+const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 
 async function sendOtpEmail(toEmail, otp) {
-  await transporter.sendMail({
-    from: `"BlockMeet" <${process.env.EMAIL_USER}>`,
-    to: toEmail,
+  const sendSmtpEmail = {
+    to: [{ email: toEmail }],
+    sender: { email: process.env.EMAIL_USER, name: "BlockMeet" },
     subject: "Your BlockMeet verification code",
-    html: `
+    htmlContent: `
       <div style="font-family: sans-serif; max-width: 420px; margin: auto;">
         <h2 style="color: #6C5CE7;">BlockMeet</h2>
         <p>Your verification code is:</p>
@@ -30,7 +19,9 @@ async function sendOtpEmail(toEmail, otp) {
         <p style="color: #8B8D9B; font-size: 13px;">This code expires in 10 minutes. If you didn't request this, you can ignore this email.</p>
       </div>
     `,
-  });
+  };
+
+  await apiInstance.sendTransacEmail(sendSmtpEmail);
 }
 
 module.exports = sendOtpEmail;
