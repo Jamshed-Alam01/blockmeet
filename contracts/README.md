@@ -1,13 +1,28 @@
-# Sample Hardhat Project
+# 🚀 BlockMeet: Wallet-Verified Real-Time Meeting Platform
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+BlockMeet is a next-generation, privacy-focused meeting platform that integrates real-time communication with blockchain-based proof of authenticity. It ensures that meetings are secure, tamper-proof, and identity-verified.
 
-Try running some of the following tasks:
+## 🌟 Core Concept
+BlockMeet solves the problem of unauthorized meeting access and fake participation by combining **MetaMask wallet signatures** for identity verification with **Ethereum (Sepolia) blockchain** for immutable meeting proof.
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.js
-```
+## 🛠️ Tech Stack
+- **Frontend:** React (Vite), Tailwind CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB Atlas
+- **Real-time:** Socket.io, WebRTC
+- **Blockchain:** Solidity, Hardhat, Ethers.js, Sepolia Testnet
+- **Authentication:** JWT, Wallet-based Nonce Signature
+
+## 🔑 Key Features
+- **Wallet-Verified Identity:** Users verify via cryptographic signature, ensuring real users.
+- **Tamper-Proof Meetings:** Meeting summaries (duration, participants, etc.) are hashed and anchored on the blockchain.
+- **Privacy-Focused:** Only the cryptographic hash is stored on-chain; sensitive data remains off-chain.
+- **Real-Time Collaboration:** Features include Video Call (WebRTC), Screen Sharing, Whiteboard, and File Sharing.
+
+## ⚙️ Architecture Workflow
+1. **Authentication:** User signs in via Email/OTP + Wallet signature.
+2. **Real-time Communication:** Socket.io handles signaling for WebRTC video/audio calls.
+3. **Blockchain Proof:** When a meeting ends, a hash of the meeting summary is generated and stored on the Ethereum Sepolia network, creating a permanent, verifiable audit trail.
+
+---
+*Designed & Developed by Jamshed Alam*
